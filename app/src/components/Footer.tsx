@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { HStack } from "@chakra-ui/react";
+import { HStack } from '@chakra-ui/react';
 
 const Footer: React.FC = () => {
   return (
     <HStack
       color="white"
-      backgroundColor="dark.500"
+      bgColor="dark.500"
       h="128px"
       px="10%"
       gap="45px"

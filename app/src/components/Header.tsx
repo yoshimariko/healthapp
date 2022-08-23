@@ -1,5 +1,5 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { 
   Badge,
   Box,
@@ -11,7 +11,7 @@ import {
   MenuItem,
   MenuList,
   Text
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 import Logo from '../assets/image/logo.png';
 import MemoIco from '../assets/icons/memo.svg';
@@ -21,9 +21,13 @@ import MenuIco from '../assets/icons/menu.svg';
 import CloseIco from '../assets/icons/close.svg';
 
 interface HeaderItemType {
+  /** メニューのリンク先 */
   link: string,
+  /** メニューのアイコン */
   img: string,
+  /** メニューのテキストラベル */
   label: string,
+  /** メニューの数字バッジ */
   badge?: number
 }
 
@@ -52,7 +56,7 @@ const HeaderItem: React.FC<HeaderItemType> = ({ link, img, label, badge }) => {
 
 const Header: React.FC = () => {
   return (
-    <HStack backgroundColor="dark.500" h="64px" px="10%">
+    <HStack bgColor="dark.500" h="64px" px="10%">
       <Box flex={1}>
         <Image src={Logo} w="110px" />
       </Box>
