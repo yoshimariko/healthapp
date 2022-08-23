@@ -110,3 +110,68 @@ export const DietHistory = async () => {
     }
   ]
 }
+
+/**
+ * コラム（仮データ）
+ */
+ export const ColumnEntries = async () => {
+  const Img01 = await import('../assets/image/col01.jpg');
+  const Img02 = await import('../assets/image/col02.jpg');
+  const Img03 = await import('../assets/image/col03.jpg');
+  const Img04 = await import('../assets/image/col04.jpg');
+  const Img05 = await import('../assets/image/col05.jpg');
+  const Img06 = await import('../assets/image/col06.jpg');
+  const Img07 = await import('../assets/image/col07.jpg');
+  const Img08 = await import('../assets/image/col08.jpg');
+
+  return [
+    {
+      img: Img01.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img02.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img03.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img04.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img05.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img06.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img07.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    },
+    {
+      img: Img08.default,
+      date: '2021.05.17   23:25',
+      desc: '魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…',
+      cat: ['魚料理', '和食', 'DHA']
+    }
+  ]
+}

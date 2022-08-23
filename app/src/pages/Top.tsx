@@ -144,7 +144,7 @@ const Top: React.FC = () => {
         <ImageCardGrid templateColumns='repeat(4, 1fr)' gap={6} mb="28px">
           {dietHistory &&
             dietHistory.map((data) => 
-            <ImageCard img={data.img} label={`${data.date}.${data.label}`} />
+              <ImageCard img={data.img} label={`${data.date}.${data.label}`} />
             )
           }
         </ImageCardGrid>

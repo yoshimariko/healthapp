@@ -12,7 +12,8 @@ interface ImageCardType {
   /** カードのサムネイル */
   img: string,
   /** カードのバッジ */
-  label: string
+  label: string,
+  children?: React.ReactNode
 }
 
 export const ImageCardGrid: React.FC<GridProps> = (props) => {
@@ -23,17 +24,37 @@ export const ImageCardGrid: React.FC<GridProps> = (props) => {
   );
 }
 
-export const ImageCard: React.FC<ImageCardType> = ({ img, label }) => {
+export const ImageCard: React.FC<ImageCardType> = ({
+  img,
+  label,
+  children
+}) => {
   return (
-    <GridItem as="a" href="#" position="relative">
-      <Image src={img} h="100%" objectFit="cover" />
+    <GridItem
+      as="a"
+      display="flex"
+      flexDirection="column"
+      href="#"
+      pb="18px"
+    >
       <Box
-        position="absolute"
-        bottom={0} ps="8px"
-        pe="22px"
-        bgColor="primary.300"
+        position="relative"
+        h="100%"
+        w="100%"
+        mb="8px"
       >
-        <Text color="white" fontSize="sm">{label}</Text>
+        <Image src={img} h="100%" objectFit="cover" />
+        <Box
+          position="absolute"
+          bottom={0} ps="8px"
+          pe="22px"
+          bgColor="primary.300"
+        >
+          <Text color="white" fontSize="sm">{label}</Text>
+        </Box>
+      </Box>
+      <Box>
+        {children}
       </Box>
     </GridItem>
   );
