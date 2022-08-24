@@ -1,0 +1,16 @@
+/**
+ * FONT FACE
+ */
+ @font-face {
+  font-family: "Noto Sans JP";
+  src: url('./assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.otf') format('opentype');;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url('./assets/fonts/Inter/Inter-Regular.ttf') format('truetype');;
+  font-weight: normal;
+  font-style: normal;
+}
