@@ -54,6 +54,33 @@ const HeaderItem: React.FC<HeaderItemType> = ({ link, img, label, badge }) => {
   )
 }
 
+const HamburgerMenu: React.FC = () => {
+  return (
+    <Menu variant="hamburger" placement="bottom-end">
+      {({ isOpen }) => (
+        <>
+          <MenuButton
+            as={IconButton}
+            aria-label="Hamburger"
+            isActive={isOpen}
+            variant="hamburger"
+          >
+            <Image src={isOpen ? CloseIco : MenuIco} />
+          </MenuButton>
+          <MenuList zIndex={111}>
+            <RouterLink to="/record"><MenuItem>自分の記録</MenuItem></RouterLink>
+            <RouterLink to="#"><MenuItem>体重グラフ</MenuItem></RouterLink>
+            <RouterLink to="#"><MenuItem>目標</MenuItem></RouterLink>
+            <RouterLink to="#"><MenuItem>選択中のコース</MenuItem></RouterLink>
+            <RouterLink to="/column"><MenuItem>コラム一覧</MenuItem></RouterLink>
+            <RouterLink to="#"><MenuItem>設定</MenuItem></RouterLink>
+          </MenuList>
+        </>
+      )}
+    </Menu>
+  );
+};
+
 const Header: React.FC = () => {
   return (
     <HStack bgColor="dark.500" h="64px" px="10%">
@@ -66,28 +93,7 @@ const Header: React.FC = () => {
         <HeaderItem link="/record" img={MemoIco} label="自分の記録" />
         <HeaderItem link="#" img={ChallengeIco} label="チャレンジ" />
         <HeaderItem link="#" img={InfoIco} label="お知らせ" badge={1} />
-        <Menu variant="hamburger" placement="bottom-end">
-          {({ isOpen }) => (
-            <>
-              <MenuButton
-                as={IconButton}
-                aria-label="Hamburger"
-                isActive={isOpen}
-                variant="hamburger"
-              >
-                <Image src={isOpen ? CloseIco : MenuIco} />
-              </MenuButton>
-              <MenuList zIndex={111}>
-                <RouterLink to="/record"><MenuItem>自分の記録</MenuItem></RouterLink>
-                <RouterLink to="#"><MenuItem>体重グラフ</MenuItem></RouterLink>
-                <RouterLink to="#"><MenuItem>目標</MenuItem></RouterLink>
-                <RouterLink to="#"><MenuItem>選択中のコース</MenuItem></RouterLink>
-                <RouterLink to="/column"><MenuItem>コラム一覧</MenuItem></RouterLink>
-                <RouterLink to="#"><MenuItem>設定</MenuItem></RouterLink>
-              </MenuList>
-            </>
-          )}
-        </Menu>
+        <HamburgerMenu />
       </HStack>
     </HStack>
   );

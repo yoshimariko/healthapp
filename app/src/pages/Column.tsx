@@ -72,6 +72,7 @@ const Column: React.FC = () => {
         <ColumnCategoryGridItem link="#" title="RECOMMENDED HEALTH" sub="健康" />
       </Grid>
       <Grid templateColumns='repeat(4, 1fr)' gap={3} mb="28px">
+        {/* TODO: 本データに変更 */}
         {columnEntries?.length &&
           columnEntries.map((data) => 
             <ImageCardLinkGridItem

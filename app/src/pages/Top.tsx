@@ -33,7 +33,7 @@ interface DietHistoryType {
 }
 
 
-const TopCircularChart: React.FC<{
+const CircularChart: React.FC<{
   /** ドーナツチャート内の日付ラベル */
   date: string, 
   /** ドーナツチャート内の百分率ラベル */
@@ -95,7 +95,7 @@ const Top: React.FC = () => {
         <Flex position="relative" minW="45%">
           <Image position="relative" src={Top01} width="auto" />
           {/* TODO: 本データに変更 */}
-          <TopCircularChart date="05/21" per={75} />
+          <CircularChart date="05/21" per={75} />
         </Flex>
         <Flex flex="1">
           {/* TODO: 本データに変更 */}

@@ -39,7 +39,8 @@ export const ImageCardLinkGridItem: React.FC<ImageCardLinkGridItemType> = ({
         <Image src={img} h="100%" objectFit="cover" />
         <Box
           position="absolute"
-          bottom={0} ps="8px"
+          bottom={0}
+          ps="8px"
           pe="22px"
           bgColor="primary.300"
         >

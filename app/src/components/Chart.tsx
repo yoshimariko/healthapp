@@ -28,6 +28,7 @@ const Chart: React.FC<{
       >
         <CartesianGrid horizontal={false} />
         <XAxis dataKey="name" axisLine={false} tickLine={false} />
+        {/* TODO: ラインチャートのカラーを動的に変更 */}
         <Line
           type="linear" 
           dot={{ fill: '#FFCC21' }}
