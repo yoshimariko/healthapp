@@ -3,18 +3,18 @@ import {
   Button,
   CircularProgress,
   CircularProgressLabel,
-  Container,
   Flex,
+  Grid,
   HStack,
   Image,
   Text
 } from '@chakra-ui/react';
-import { CartesianGrid, LineChart, XAxis, Line, ResponsiveContainer } from 'recharts';
 
-import { chartData, DietHistory } from '../lib/populator';
+import { chartData, getDietHistories } from '../lib/populator';
 
 import MainLayout from '../components/Layout';
-import { ImageCard, ImageCardGrid } from '../components/Cards';
+import Chart from '../components/Chart';
+import { ImageCardLinkGridItem } from '../components/GridCards';
 import { HexButton } from '../components/Buttons';
 
 import Top01 from '../assets/image/top_01.jpg';
@@ -27,43 +27,11 @@ interface DietHistoryType {
   /** 食事履歴のテキストラベル */
   label: string,
   /** 食事履歴の日付 */
-  date: string
+  date: string,
+  /** 食事履歴のリンク先 */
+  link: string,
 }
 
-interface GraphDataType {
-  /** グラフのアクシスXラベル */
-  name: string,
-  /** ラインデータ１ */
-  firstData: number,
-  /** ラインデータ２ */
-  secondData: number
-}
-
-const TopGraph: React.FC<{ graphData: GraphDataType[] }> = ({ graphData }) => {
-  return (
-    <ResponsiveContainer width="100%" minHeight={312}>
-      <LineChart data={graphData}
-        margin={{ top: 12, right: 30, left: 20, bottom: 12 }}>
-        <CartesianGrid horizontal={false} />
-        <XAxis dataKey="name" axisLine={false} tickLine={false} />
-        <Line
-          type="linear" 
-          dot={{ fill: '#FFCC21' }}
-          dataKey="firstData"
-          stroke="#FFCC21"
-          strokeWidth={3}
-        />
-        <Line
-          type="linear"
-          dot={{ fill: '#8FE9D0' }}
-          dataKey="secondData"
-          stroke="#8FE9D0"
-          strokeWidth={3}
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  );
-}
 
 const TopCircularChart: React.FC<{
   /** ドーナツチャート内の日付ラベル */
@@ -102,7 +70,7 @@ const TopCircularChart: React.FC<{
           <Text
             as="span"
             color="white"
-            fontSize="25px"
+            fontSize="3xl"
           >
             {per}%
           </Text>
@@ -113,17 +81,17 @@ const TopCircularChart: React.FC<{
 }
 
 const Top: React.FC = () => {
-  const [dietHistory, setDietHistory] = useState<DietHistoryType[]>();
+  const [dietHistories, setDietHistories] = useState<DietHistoryType[]>();
 
   useEffect(() => {
     // NOTE: 仮データを用意する
     // TODO: 本データーに変更
-    DietHistory().then((data) => setDietHistory(data));
+    getDietHistories().then((data) => setDietHistories(data));
   }, []);
 
   return (
     <MainLayout>
-      <HStack h="312px" overflow="hidden" bgColor="dark.600">
+      <HStack h="312px" overflow="hidden" mt="-56px" mx="-160px" bgColor="dark.600">
         <Flex position="relative" minW="45%">
           <Image position="relative" src={Top01} width="auto" />
           {/* TODO: 本データに変更 */}
@@ -131,7 +99,7 @@ const Top: React.FC = () => {
         </Flex>
         <Flex flex="1">
           {/* TODO: 本データに変更 */}
-          <TopGraph graphData={chartData} />
+          <Chart graphData={chartData} height={312} />
         </Flex>
       </HStack>
       <HStack my="22px" gap="84px" justifyContent="center">
@@ -140,24 +108,27 @@ const Top: React.FC = () => {
         <HexButton link="#" img={KnifeIco} label="Dinner" />
         <HexButton link="#" img={CupIco} label="Snack" />
       </HStack>
-      <Container px="160px" maxW="100%" pb="64px">
-        <ImageCardGrid templateColumns='repeat(4, 1fr)' gap={6} mb="28px">
-          {dietHistory &&
-            dietHistory.map((data) => 
-              <ImageCard img={data.img} label={`${data.date}.${data.label}`} />
-            )
-          }
-        </ImageCardGrid>
-        <Button
-          display="flex"
-          mx="auto"
-          variant="primary"
-          minW="296px"
-          minH="56px"
-        >
-          記録をもっと見る
-        </Button>
-      </Container>
+      <Grid templateColumns='repeat(4, 1fr)' gap={6} mb="28px">
+        {/* TODO: 本データに変更 */}
+        {dietHistories &&
+          dietHistories.map((data) => 
+            <ImageCardLinkGridItem 
+              img={data.img} 
+              label={`${data.date}.${data.label}`} 
+              link={data.link}
+            />
+          )
+        }
+      </Grid>
+      <Button
+        display="flex"
+        mx="auto"
+        variant="primary"
+        minW="296px"
+        minH="56px"
+      >
+        記録をもっと見る
+      </Button>
     </MainLayout>
   );
 }

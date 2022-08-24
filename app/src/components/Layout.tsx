@@ -13,7 +13,9 @@ const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
   return (
     <Container maxW="100%" position="relative" p="0">
-      {children}
+      <Container px="160px" py="56px" maxW="100%">
+        {children}
+      </Container>
       <Link
         href="#"
         display="flex"

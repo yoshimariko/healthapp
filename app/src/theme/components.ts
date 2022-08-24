@@ -56,3 +56,45 @@ export const Button: ComponentStyleConfig = {
     }
   }
 }
+
+export const Tabs: ComponentMultiStyleConfig = {
+  parts: ['list', 'tab'],
+  variants: {
+    dark: {
+      tab: {
+        borderRadius: '55px',
+        bgColor: 'white',
+        color: 'primary.300',
+        fontSize: '15px',
+        me: '16px',
+        _selected: {
+          bgColor: 'primary.300',
+          color: 'white',
+        },
+      }
+    }
+  }
+}
+
+
+/**
+ * ----------------------------
+ * Custom Styled Components
+ * ----------------------------
+ */
+export const CustomScroll = {
+  baseStyle: {
+    '&::-webkit-scrollbar': {
+      width: '4px',
+    },
+    '&::-webkit-scrollbar-track': {
+      background: 'dark.300',
+      width: '6px',
+      borderRadius: '10px'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: 'primary.300',
+      borderRadius: '24px',
+    },
+  }
+}

@@ -57,11 +57,13 @@ const HeaderItem: React.FC<HeaderItemType> = ({ link, img, label, badge }) => {
 const Header: React.FC = () => {
   return (
     <HStack bgColor="dark.500" h="64px" px="10%">
-      <Box flex={1}>
-        <Image src={Logo} w="110px" />
-      </Box>
+      <RouterLink to="/">
+        <Box flex={1}>
+          <Image src={Logo} w="110px" />
+        </Box>
+      </RouterLink>
       <HStack color="white" flex="1" gap="32px" justifyContent="end">
-        <HeaderItem link="#" img={MemoIco} label="自分の記録" />
+        <HeaderItem link="/record" img={MemoIco} label="自分の記録" />
         <HeaderItem link="#" img={ChallengeIco} label="チャレンジ" />
         <HeaderItem link="#" img={InfoIco} label="お知らせ" badge={1} />
         <Menu variant="hamburger" placement="bottom-end">
@@ -75,13 +77,13 @@ const Header: React.FC = () => {
               >
                 <Image src={isOpen ? CloseIco : MenuIco} />
               </MenuButton>
-              <MenuList>
-                <MenuItem>自分の記録</MenuItem>
-                <MenuItem>体重グラフ</MenuItem>
-                <MenuItem>目標</MenuItem>
-                <MenuItem>選択中のコース</MenuItem>
-                <MenuItem>コラム一覧</MenuItem>
-                <MenuItem>設定</MenuItem>
+              <MenuList zIndex={111}>
+                <RouterLink to="/record"><MenuItem>自分の記録</MenuItem></RouterLink>
+                <RouterLink to="#"><MenuItem>体重グラフ</MenuItem></RouterLink>
+                <RouterLink to="#"><MenuItem>目標</MenuItem></RouterLink>
+                <RouterLink to="#"><MenuItem>選択中のコース</MenuItem></RouterLink>
+                <RouterLink to="/column"><MenuItem>コラム一覧</MenuItem></RouterLink>
+                <RouterLink to="#"><MenuItem>設定</MenuItem></RouterLink>
               </MenuList>
             </>
           )}
